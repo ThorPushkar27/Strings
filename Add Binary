@@ -1,0 +1,33 @@
+// o(N) Time Complexity.
+
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        string res= "";
+        int carry =0;
+        int i= a.length()-1;
+        int j = b.length()-1;
+        int ival;
+        int jval;
+        while(i>=0 || j>=0 || carry!=0){
+            if(i>=0){
+                ival= a[i]-'0';
+            }
+            else{
+                ival= 0;
+            }
+            if(j>=0){
+                jval= b[j]-'0';
+            }
+            else{
+                jval= 0;
+            }
+            i--;
+            j--;
+            int sum = ival+jval+carry;
+            carry = sum/2;
+            res= to_string(sum%2)+res;
+        }
+        return res;
+    }
+};
